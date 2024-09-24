@@ -144,7 +144,7 @@ const data = [
   }
 
   //Destructuring Objects
-  const book=getBook(1);
+  const book=getBook(2);
   const {title,author,pages,publicationDate,genres,hasMovieAdaptation}=book;
   console.log(author,title);
    
@@ -159,3 +159,44 @@ const updateBook={...book,
     pages:1225,//Overwriting an existing property
     };
 updateBook;
+
+//Template Literals
+const summary=`${title}, a ${pages}-page longbook, was written by ${author} and published in ${publicationDate.split("-")[0]}. The book has ${hasMovieAdaptation?"":"not"}been adapted as a movie`;
+summary;
+
+//Ternaries
+const pagesRange =pages>1000? 'over a thousand': 'less than 1000';
+//condition? true part:false part
+pagesRange;
+console.log(`The book has ${pagesRange}  pages`);
+
+//Arrow functions
+//Traditional way:
+// function getYear(str){
+//   return str.split("-")[0];
+// }
+const getYear= (str)=> str.split("-")[0];
+console.log(getYear(publicationDate));
+
+//Short-Circuiting And Operator
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+//Falsy Values: 0,null, " ",undefined
+console.log(0 && "Some string");
+
+//OR Operator
+console.log(true||"Some String");
+console.log(false||"Some string");
+
+console.log(book.translations.spanish);
+const spanishTranslation=book.translations.spanish|| "NOT translated";
+spanishTranslation;
+
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong=book.reviews.librarything.reviewsCount|| "no data";
+countWrong;
+
+const count=book.reviews.librarything.reviewsCount ?? "no data";
+count;
